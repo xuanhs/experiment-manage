@@ -1,6 +1,6 @@
 <template>
   <div>
-    <tabPan></tabPan>
+    <!-- <tabPan></tabPan> -->
     <el-upload
       class="upload-demo"
       action="api/file/uploadTest"
@@ -19,8 +19,8 @@
     <button @click="test">测试</button>
   </div>
 </template>
-import tabPan from tabPan;
 <script>
+import tabPan from '@/components/tabPan'
     export default {
         name: 'index',
         data() {

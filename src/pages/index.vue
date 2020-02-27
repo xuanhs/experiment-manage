@@ -1,7 +1,12 @@
 <template>
+    <div class="index">
+        <HelloWorld></HelloWorld>
+        <router-view></router-view>
+    </div>
 </template>
-import tabPan from tabPan;
 <script>
+import tabPan from '@/components/tabPan'
+import HelloWorld from '@/components/HelloWorld'
     export default {
         name: 'index',
         data() {
@@ -9,6 +14,9 @@ import tabPan from tabPan;
             }
         },
         methods: {
+        },
+        components: {
+            HelloWorld,
         }
     }
 </script>

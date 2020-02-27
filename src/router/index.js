@@ -1,27 +1,31 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
-import index from '@/components/index'
-import login from '@/components/login'
+import index from '@/pages/index'
+import tabPan from '@/components/tabPan'
+import login from '@/pages/login'
 
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
+      path: '/index',
+      name: 'index',
+      component: index,
+      children: [
+        {
+          path: 'tabPan',
+          name: 'tabPan',
+          component: tabPan,
+        },
+      ]
+
+    },
+    {
       path: '/',
-      name: '主页',
-      component: index
-    },
-    {
-      path: '/HelloWorld',
-      name: 'hello',
-      component: HelloWorld
-    },
-    {
-      path: '/login',
-      name: '登录',
+      name: 'login',
       component: login
-    }
+    },
   ]
 })

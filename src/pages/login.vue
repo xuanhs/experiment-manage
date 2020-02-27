@@ -5,8 +5,8 @@
     <el-button @click="login">登录</el-button>
   </div>
 </template>
-import tabPan from tabPan;
 <script>
+import tabPan from '@/components/tabPan'
 export default {
   name: "login",
   data() {
@@ -22,11 +22,15 @@ export default {
         name: this.name,
         password: this.password
       };
-      this.$http.post(url, args).then(res => {
-        if (res.data.status == 1200) {
-          location.href = 'http://localhost:8080/#/index'
-        }
-      });
+      
+      this.$router.push({
+        name: 'index'
+      })
+      // this.$http.post(url, args).then(res => {
+      //   if (res.data.status == 1200) {
+      //     // location.href = 'http://localhost:8080/#/index'
+      //   }
+      // });
     }
   }
 };

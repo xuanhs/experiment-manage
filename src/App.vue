@@ -1,17 +1,12 @@
 <template>
   <div id="app">
-    <div class="topTab">
-      <tabPan></tabPan>
-    </div>
     <router-view />
   </div>
 </template>
 
 <script>
-import tabPan from "./components/tabPan.vue";
 export default {
   components: {
-    tabPan
   },
   name: "App"
 };
