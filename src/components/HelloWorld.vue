@@ -1,85 +1,76 @@
 <template>
 
-  <div class="helloworld">
-    
-    <div class="right">
-      图片
-    </div>
-    <div class="aaa">
-      aaa
-    </div>
-    <div class="tab-list">
-      <div :class="'tab-item '+(currId == item.id?'active': '')" v-for="(item,index) in tabLists" :key="index" @click="openpage(item)">
-        {{item.name}}
-      </div>
-    </div>
+  <div class="helloWorld">
+
+    <el-menu :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+      <el-menu-item index="home">主页</el-menu-item>
+      <el-menu-item index="course">课程管理</el-menu-item>
+      <el-menu-item index="login">登录</el-menu-item>
+      <el-submenu index="2">
+        <template slot="title">我的工作台</template>
+        <el-menu-item index="2-1">选项1</el-menu-item>
+        <el-menu-item index="2-2">选项2</el-menu-item>
+        <el-menu-item index="2-3">选项3</el-menu-item>
+        <el-submenu index="2-4">
+          <template slot="title">选项4</template>
+          <el-menu-item index="2-4-1">选项1</el-menu-item>
+          <el-menu-item index="2-4-2">选项2</el-menu-item>
+          <el-menu-item index="2-4-3">选项3</el-menu-item>
+        </el-submenu>
+      </el-submenu>
+      <el-menu-item index="3" disabled>消息中心</el-menu-item>
+      <el-menu-item index="4"><a href="https://www.ele.me" target="_blank">订单管理</a></el-menu-item>
+    </el-menu>
   </div>
-  <!-- <el-tabs v-model="activeName" @tab-click="handleClick">
-    <el-tab-pane label="用户管理" name="first">用户管理
-      
-    </el-tab-pane>
-    <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
-    <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
-    <el-tab-pane label="定时任务补偿" name="fourth">定时任务补偿</el-tab-pane>
-  </el-tabs> -->
 </template>
 <script>
-export default {
-  data() {
-    return {
-      activeName: "second",
-      currId: '',
-      tabLists: [
-        {
-          id: 'tabPan',
-          name: 'aaaa',
+    export default {
+        data() {
+            return {
+                activeIndex: "home"
+            };
         },
-        {
-          id: 'login',
-          name: 'bbbb',
+        methods: {
+            handleClick(tab, event) {
+                console.log(tab, event);
+            },
+            handleSelect(key, keyPath) {
+                console.log(key);
+                console.log(keyPath)
+                this.activeIndex = key
+                this.$router.push({
+                    name: key
+                })
+            },
         },
-        {
-          id: 3,
-          name: 'ccccc',
-        },
-        {
-          id: 4,
-          name: 'ddddd',
-        },
-      ]
+        props:{
+           /* activeIndex: {
+                type: String,
+                default: 'index'
+            }*/
+        }
     };
-  },
-  methods: {
-    handleClick(tab, event) {
-      console.log(tab, event);
-    },
-    openpage(item){
-      this.currId = item.id
-      this.$router.push({
-        name: item.id
-      })
-    }
-  }
-};
 </script>
 
 <style scoped>
-  .helloworld{
+  .helloWorld {
     display: flex;
     justify-content: space-between;
   }
-  .tab-list{
+
+  .tab-list {
     display: flex;
     justify-content: center;
     align-items: center;
   }
-  
-  .tab-item{
+
+  .tab-item {
     width: 100px;
     height: 60px;
     line-height: 60px;
   }
-  .active{
+
+  .active {
     background: yellow;
   }
 </style>

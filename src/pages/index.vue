@@ -1,20 +1,20 @@
 <template>
-    <div class="index">
-        <HelloWorld></HelloWorld>
-        <router-view></router-view>
-    </div>
+  <div class="index">
+    <HelloWorld>
+    </HelloWorld>
+    <router-view></router-view>
+  </div>
+
 </template>
 <script>
-import tabPan from '@/components/tabPan'
-import HelloWorld from '@/components/HelloWorld'
+    import HelloWorld from '@/components/HelloWorld'
+
     export default {
         name: 'index',
         data() {
-            return {
-            }
+            return {}
         },
-        methods: {
-        },
+        methods: {},
         components: {
             HelloWorld,
         }
@@ -23,4 +23,6 @@ import HelloWorld from '@/components/HelloWorld'
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
+
 </style>
