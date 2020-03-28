@@ -67,7 +67,7 @@
            this.dialogVisible = false
         },
         onAdd(){
-           let path = 'api/updateCourse'
+           let path = 'api/course/updateCourse'
             let args = {
                 name: this.form.name,
                 explanation: this.form.explanation

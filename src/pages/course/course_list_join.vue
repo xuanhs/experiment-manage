@@ -72,7 +72,7 @@ export default {
   },
   methods: {
     initData() {
-      let path = 'api/getCourseList'
+      let path = 'api/course/getCourseList'
       let args = {
         searchType: 0
       }
