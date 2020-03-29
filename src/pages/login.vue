@@ -1,11 +1,10 @@
 <template>
   <div class="box">
-    <HelloWorld
-      :activeIndex="login">
-    </HelloWorld>
+
     <el-input placeholder="用户名" v-model="name" clearable></el-input>
     <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
     <el-button @click="login">登录</el-button>
+    <img :src="getImage">
   </div>
 </template>
 <script>
@@ -14,7 +13,8 @@ export default {
   data() {
     return {
       name: "",
-      password: ""
+      password: "",
+      getImage:require('D:/experiment/image/default.jpg')
     };
   },
   methods: {
@@ -25,14 +25,17 @@ export default {
         password: this.password
       };
 
-      this.$router.push({
-        name: 'index'
-      })
-      // this.$http.post(url, args).then(res => {
-      //   if (res.data.status == 1200) {
-      //     // location.href = 'http://localhost:8080/#/index'
-      //   }
-      // });
+      this.$http.post(url, args).then(res => {
+        console.log(res.data.data)
+        if (res.data.status == 0 && res.data.data.code == 0) {
+          this.$router.push({
+            name: 'index'
+          })
+        }
+        else {
+          this.$message.error(res.data.data.message)
+        }
+      });
     }
   }
 };

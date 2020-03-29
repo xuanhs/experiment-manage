@@ -2,6 +2,7 @@
    <el-dialog
     title="创建课程"
     :visible.sync="dialogVisible"
+    close-on-click-modal="false"
     @close="closeDialog">
    <el-form :model="form" label-width="120px" :rules="rules" ref="formRef" class="my-form">
             <el-form-item label="课程名称" prop="name">

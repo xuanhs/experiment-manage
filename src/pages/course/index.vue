@@ -1,29 +1,33 @@
 <template>
-  <div>
-    <div class="operate-course">
-      <el-col>
-        <el-button @click="addCourse">创建课程</el-button>
-      </el-col>
+  <div class="all-in">
+    <div class="in-left">
+      <div class="operate-course">
+        <i class="el-icon-edit"></i>
+        <el-button type="primary" icon="el-icon-search">搜索</el-button>
+      </div>
+      <div>
+        <el-tabs
+          v-model="activeName"
+          @tab-click="handleClick"
+          class="show-course"
+        >
+          <el-tab-pane
+            label="我创建的课程"
+            name="create"
+          >
+            <courseList :searchType='1'></courseList>
+          </el-tab-pane>
+          <el-tab-pane
+            label="我加入的课程"
+            name="join"
+          >
+            <courseList :searchType='0'></courseList>
+          </el-tab-pane>
+        </el-tabs>
+      </div>
     </div>
-    <div>
-      <el-tabs
-        v-model="activeName"
-        @tab-click="handleClick"
-        class="show-course"
-      >
-        <el-tab-pane
-          label="我创建的课程"
-          name="create"
-        >
-          <courseList :searchType='1'></courseList>
-        </el-tab-pane>
-        <el-tab-pane
-          label="我加入的课程"
-          name="join"
-        >
-          <courseList :searchType='0'></courseList>
-        </el-tab-pane>
-      </el-tabs>
+    <div class="in-right">
+
     </div>
     <!-- 弹窗区 -->
     <addCourseDialog v-if="isAddCourseDialog"></addCourseDialog>
@@ -58,17 +62,26 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .show-course {
-  width: 80%;
+  width: 100%;
   height: 100%;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .operate-course {
-  width: 80%;
-  height: 100px;
-  margin-right: auto;
-  margin-left: auto;
+  height: 50px;
 }
+.in-right{
+  float: right;
+  width: 20%;
+  height: 1000px;
+  background: aliceblue;
+}
+.in-left{
+  float: left;
+  width: 70%;
+  height: 1000px;
+}
+  .all-in{
+    width: 80%;
+    margin: auto;
+  }
 </style>

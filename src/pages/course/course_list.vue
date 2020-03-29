@@ -1,57 +1,18 @@
 <template>
-  <el-table
-    :data="dataSource"
-    style="width: 100%"
-  >
-    <el-table-column
-      prop="name"
-      label="课程名称"
-      sortable
-      width="180"
-    >
-    </el-table-column>
-    <el-table-column
-      prop="teacherName"
-      label="所属教师"
-      sortable
-      width="180"
-    >
-    </el-table-column>
-    <el-table-column
-      prop="explanation"
-      label="说明"
-      sortable
-      width="180"
-    >
-    </el-table-column>
-    <el-table-column
-      prop="cover"
-      label="封面"
-      sortable
-      width="180"
-    >
-    </el-table-column>
-    <el-table-column
-      prop="createTime"
-      label="创建时间"
-      sortable
-      width="180"
-    >
-    </el-table-column>
-    <el-table-column label="操作">
-      <template slot-scope="scope">
-        <el-button
-          size="mini"
-          @click="handleEdit(scope.row)"
-        >编辑</el-button>
-        <el-button
-          size="mini"
-          type="danger"
-          @click="handleDelete(scope.row)"
-        >删除</el-button>
-      </template>
-    </el-table-column>
-  </el-table>
+  <el-row >
+    <el-col :span="24" v-for="(item,index) in dataSource" :key="index" :value="item">
+      <el-card :body-style="{ padding: '0px' }">
+        <img :src='item.cover' class="image">
+        <div style="padding: 14px;">
+          <span>{{item.cover}}</span>
+          <div class="bottom clearfix">
+            <time class="time">时间</time>
+            <el-button type="text" class="button">操作按钮</el-button>
+          </div>
+        </div>
+      </el-card>
+    </el-col>
+  </el-row>
 </template>
 <script>
 
@@ -67,7 +28,8 @@ export default {
   },
   data() {
     return {
-      dataSource: []
+      dataSource: [],
+      source:'D:/experiment/image/',
     }
   },
   methods: {
@@ -80,7 +42,13 @@ export default {
       this.$http.post(path, args).then(res => {
         console.log(res.data.status === 200)
         if (res.data.data) {
-          this.dataSource = res.data.data
+          let dataSource = res.data.data
+          for(let i = 0;i<dataSource.length;i++){
+            let cover = dataSource[i].cover
+            dataSource[i].cover = require('D:/experiment/image/'+cover)
+            console.log("dataSource",dataSource)
+          }
+          this.dataSource = dataSource
         } else if (res.data.data.code === 1) {
           this.$message.error(res.data.result.reason)
         } else {
@@ -97,18 +65,35 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.show-course {
-  width: 80%;
-  height: 100%;
-  margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
-}
+  .time {
+    font-size: 13px;
+    color: #999;
+  }
 
-.operate-course {
-  width: 80%;
-  height: 100px;
-  margin-right: auto;
-  margin-left: auto;
-}
+  .bottom {
+    margin-top: 13px;
+    line-height: 12px;
+  }
+
+  .button {
+    padding: 0;
+    float: right;
+  }
+
+  .image {
+    width:80%;
+    height:200px;
+    display: block;
+  }
+
+  .clearfix:before,
+  .clearfix:after {
+    display: table;
+    content: "";
+  }
+
+  .clearfix:after {
+    clear: both
+  }
+
 </style>
