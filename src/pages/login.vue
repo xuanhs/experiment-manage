@@ -4,7 +4,10 @@
     <el-input placeholder="用户名" v-model="name" clearable></el-input>
     <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
     <el-button @click="login">登录</el-button>
-    <img :src="getImage">
+    <el-image
+      style="width: 100px; height: 100px"
+      :src="getImage"
+      fit="contain"></el-image>
   </div>
 </template>
 <script>
