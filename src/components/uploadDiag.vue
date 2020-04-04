@@ -20,7 +20,6 @@
   </div>
 </template>
 <script>
-import tabPan from '@/components/tabPan'
     export default {
         name: 'index',
         data() {

@@ -9,17 +9,24 @@
 
         >
           <el-tab-pane
-            label="我创建的课程"
+            label="创建的课程"
             name="create"
 
           >
             <courseList :searchType='1' @addCourse="addCourse"></courseList>
           </el-tab-pane>
           <el-tab-pane
-            label="我加入的课程"
-            name="join"
+            label="加入的课程"
+            name="more"
           >
             <courseList :searchType='0'></courseList>
+          </el-tab-pane>
+
+          <el-tab-pane
+            label="更多课程"
+            name="join"
+          >
+            <courseList :searchType='2'></courseList>
           </el-tab-pane>
         </el-tabs>
       </div>

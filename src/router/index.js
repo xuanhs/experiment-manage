@@ -6,6 +6,7 @@ import tabPan from '@/components/tabPan'
 import login from '@/pages/login'
 import course from '@/pages/course/index'
 import home from '@/pages/home/index'
+import course_setting from '@/pages/course/course_setting'
 
 Vue.use(Router)
 
@@ -31,6 +32,11 @@ export default new Router({
           name: "home",
           component: home,
         },
+        {
+          path: 'course_setting',
+          name: 'course_setting',
+          component: course_setting
+        }
       ]
 
     },
