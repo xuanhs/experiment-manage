@@ -1,13 +1,10 @@
 <template>
+  <div class="all-in">
   <div class="box">
-
     <el-input placeholder="用户名" v-model="name" clearable></el-input>
     <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
     <el-button @click="login">登录</el-button>
-    <el-image
-      style="width: 100px; height: 100px"
-      :src="getImage"
-      fit="contain"></el-image>
+  </div>
   </div>
 </template>
 <script>
@@ -47,11 +44,14 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .box {
-    height: 600px;
-    width: 860px;
-    margin-top: 100px;
+    height: 400px;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
+  }
+  .all-in{
+    background: url('~@/assets/course.jpg') center ;
+    height: 100%;
   }
 
   .mini-box {

@@ -9,6 +9,14 @@
 
       >
         <el-tab-pane
+          label="申请信息"
+          name="create"
+
+        >
+          <class_manage :courseId="form.id">
+          </class_manage>
+        </el-tab-pane>
+        <el-tab-pane
           label="班级管理"
           name="create"
 
@@ -16,6 +24,7 @@
           <class_manage :courseId="form.id">
           </class_manage>
         </el-tab-pane>
+
       </el-tabs>
     </div>
 
