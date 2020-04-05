@@ -43,6 +43,21 @@
           width="180"
           label="联系方式">
         </el-table-column>
+        <el-table-column
+          width="180"
+          label="操作">
+          <template slot-scope="scope">
+            <el-button
+              size="mini"
+              @click="handleRemove(scope.row)">移动
+            </el-button>
+            <el-button
+              size="mini"
+              type="danger"
+              @click="handleDelete(scope.row)">删除
+            </el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </div>
   </div>
@@ -73,7 +88,12 @@
       this.init();
     },
     methods: {
-
+      handleDelete(row){
+        console.log("删除学生",row);
+      },
+      handleRemove(row){
+        console.log("移动学生",row);
+      },
       handleClick(tag){
 
         let index = this.className.indexOf(tag);
@@ -178,8 +198,10 @@
   }
 
   .table-right {
-    float: left;
-    margin-left: 20px;
+    float: right;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .bottom {

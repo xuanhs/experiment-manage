@@ -84,7 +84,20 @@
         this.isAddCourseDialog = false
       },
       onApply(item) {
-        console.log("申请加入课程")
+        console.log("申请加入课程", item)
+        let path = 'api/user/course/applyCourse'
+        let args = {
+          courseId: item.id
+        }
+        this.$http.post(path, args).then(res => {
+          if (res.data.status == 0 && res.data.data.code == 0) {
+            this.$message.success("申请成功")
+          } else if (res.data.status == 0 && res.data.data.code == 0) {
+            this.$message.error(res.data.data.message)
+          }else {
+            this.$message.error('申请失败')
+          }
+        })
       },
       onAddCourse() {
         console.log("新增课程")

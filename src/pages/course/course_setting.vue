@@ -10,21 +10,29 @@
       >
         <el-tab-pane
           label="申请信息"
-          name="create"
+          name="apply"
 
         >
-          <class_manage :courseId="form.id">
-          </class_manage>
+          <apply_course_list :courseId="form.id">
+          </apply_course_list>
         </el-tab-pane>
         <el-tab-pane
           label="班级管理"
-          name="create"
+          name="class"
 
         >
           <class_manage :courseId="form.id">
           </class_manage>
         </el-tab-pane>
 
+        <el-tab-pane
+          label="实验管理"
+          name="experiment"
+
+        >
+          <class_manage :courseId="form.id">
+          </class_manage>
+        </el-tab-pane>
       </el-tabs>
     </div>
 
@@ -34,6 +42,7 @@
 <script>
   import class_manage from '@/pages/course/class_manage.vue'
   import courseList from '@/pages/course/course_list.vue'
+  import apply_course_list from '@/pages/course/apply_course_list.vue'
 
   export default {
     name: 'index',
@@ -85,7 +94,7 @@
         this.isAddCourseDialog = false
       }
     },
-    components: {class_manage, courseList}
+    components: {class_manage, courseList, apply_course_list}
   }
 </script>
 
